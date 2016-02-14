@@ -1,0 +1,14 @@
+Installation:
+
+Copy \zenopit\ to \steamapps\sourcemods\ and restart Steam.
+
+FAQ:
+
+Q. How do I open the menu?
+A. Press Q.
+
+Q. The menu still doesn't show!
+A. Press ESC or open the console to see it (yes this is annoying).
+
+Q. Nothing happens when I try to spawn something!
+A. Make sure you're pointing so that your cursor would be on the floor - the game won't spawn anything if you're pointing at a wall because it can't spawn things in a wall.
