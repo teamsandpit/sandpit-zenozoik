@@ -1,0 +1,7 @@
+utils/serverplugin_sample/Debug
+utils/serverplugin_sample/Release
+
+# Visual Studio-related stuff
+*.ncb
+*.suo
+*.vcproj.*
