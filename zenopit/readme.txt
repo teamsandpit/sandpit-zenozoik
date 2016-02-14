@@ -8,6 +8,10 @@ Help: Read the manual.
 
 == Changelog ==
 
+v0.2 (24/6/13)
+- Changed menu buttons to show npc names instead of npc class names.
+- Changed map's texture to something that doesn't show up funky.
+
 v0.1 (20/6/13)
 - Initial release.
 

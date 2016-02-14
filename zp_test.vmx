@@ -2,7 +2,7 @@ versioninfo
 {
 	"editorversion" "400"
 	"editorbuild" "4500"
-	"mapversion" "7"
+	"mapversion" "6"
 	"formatversion" "100"
 	"prefab" "0"
 }
@@ -20,7 +20,7 @@ viewsettings
 world
 {
 	"id" "1"
-	"mapversion" "7"
+	"mapversion" "6"
 	"classname" "worldspawn"
 	"detailmaterial" "detail/detailsprites"
 	"detailvbsp" "detail.vbsp"
@@ -33,7 +33,7 @@ world
 		{
 			"id" "1"
 			"plane" "(-1024 1024 64) (1024 1024 64) (1024 -1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -44,7 +44,7 @@ world
 		{
 			"id" "2"
 			"plane" "(-1024 -1024 0) (1024 -1024 0) (1024 1024 0)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -55,7 +55,7 @@ world
 		{
 			"id" "3"
 			"plane" "(-1024 1024 64) (-1024 -1024 64) (-1024 -1024 0)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -66,7 +66,7 @@ world
 		{
 			"id" "4"
 			"plane" "(1024 1024 0) (1024 -1024 0) (1024 -1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -77,7 +77,7 @@ world
 		{
 			"id" "5"
 			"plane" "(1024 1024 64) (-1024 1024 64) (-1024 1024 0)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -88,7 +88,7 @@ world
 		{
 			"id" "6"
 			"plane" "(1024 -1024 0) (-1024 -1024 0) (-1024 -1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -109,7 +109,7 @@ world
 		{
 			"id" "7"
 			"plane" "(-1088 1024 704) (-1024 1024 704) (-1024 -1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -120,7 +120,7 @@ world
 		{
 			"id" "8"
 			"plane" "(-1088 -1024 64) (-1024 -1024 64) (-1024 1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -131,7 +131,7 @@ world
 		{
 			"id" "9"
 			"plane" "(-1088 1024 704) (-1088 -1024 704) (-1088 -1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -142,7 +142,7 @@ world
 		{
 			"id" "10"
 			"plane" "(-1024 1024 64) (-1024 -1024 64) (-1024 -1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -153,7 +153,7 @@ world
 		{
 			"id" "11"
 			"plane" "(-1024 1024 704) (-1088 1024 704) (-1088 1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -164,7 +164,7 @@ world
 		{
 			"id" "12"
 			"plane" "(-1024 -1024 64) (-1088 -1024 64) (-1088 -1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -185,7 +185,7 @@ world
 		{
 			"id" "13"
 			"plane" "(1024 1024 704) (1088 1024 704) (1088 -1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -196,7 +196,7 @@ world
 		{
 			"id" "14"
 			"plane" "(1024 -1024 64) (1088 -1024 64) (1088 1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -207,7 +207,7 @@ world
 		{
 			"id" "15"
 			"plane" "(1024 1024 704) (1024 -1024 704) (1024 -1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -218,7 +218,7 @@ world
 		{
 			"id" "16"
 			"plane" "(1088 1024 64) (1088 -1024 64) (1088 -1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -229,7 +229,7 @@ world
 		{
 			"id" "17"
 			"plane" "(1088 1024 704) (1024 1024 704) (1024 1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -240,7 +240,7 @@ world
 		{
 			"id" "18"
 			"plane" "(1088 -1024 64) (1024 -1024 64) (1024 -1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -261,7 +261,7 @@ world
 		{
 			"id" "19"
 			"plane" "(-1024 1088 704) (1024 1088 704) (1024 1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -272,7 +272,7 @@ world
 		{
 			"id" "20"
 			"plane" "(-1024 1024 64) (1024 1024 64) (1024 1088 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -283,7 +283,7 @@ world
 		{
 			"id" "21"
 			"plane" "(-1024 1088 704) (-1024 1024 704) (-1024 1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -294,7 +294,7 @@ world
 		{
 			"id" "22"
 			"plane" "(1024 1088 64) (1024 1024 64) (1024 1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -305,7 +305,7 @@ world
 		{
 			"id" "23"
 			"plane" "(1024 1088 704) (-1024 1088 704) (-1024 1088 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -316,7 +316,7 @@ world
 		{
 			"id" "24"
 			"plane" "(1024 1024 64) (-1024 1024 64) (-1024 1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -337,7 +337,7 @@ world
 		{
 			"id" "25"
 			"plane" "(-1024 -1024 704) (1024 -1024 704) (1024 -1088 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -348,7 +348,7 @@ world
 		{
 			"id" "26"
 			"plane" "(-1024 -1088 64) (1024 -1088 64) (1024 -1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -359,7 +359,7 @@ world
 		{
 			"id" "27"
 			"plane" "(-1024 -1024 704) (-1024 -1088 704) (-1024 -1088 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -370,7 +370,7 @@ world
 		{
 			"id" "28"
 			"plane" "(1024 -1024 64) (1024 -1088 64) (1024 -1088 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -381,7 +381,7 @@ world
 		{
 			"id" "29"
 			"plane" "(1024 -1024 704) (-1024 -1024 704) (-1024 -1024 64)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -392,7 +392,7 @@ world
 		{
 			"id" "30"
 			"plane" "(1024 -1088 64) (-1024 -1088 64) (-1024 -1088 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -413,7 +413,7 @@ world
 		{
 			"id" "48"
 			"plane" "(-1024 -1024 768) (-1024 1024 768) (1024 1024 768)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -424,7 +424,7 @@ world
 		{
 			"id" "47"
 			"plane" "(-1024 1024 704) (-1024 -1024 704) (1024 -1024 704)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 -1 0 0] 0.25"
 			"rotation" "0"
@@ -435,7 +435,7 @@ world
 		{
 			"id" "46"
 			"plane" "(-1024 -1024 704) (-1024 1024 704) (-1024 1024 768)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -446,7 +446,7 @@ world
 		{
 			"id" "45"
 			"plane" "(1024 1024 704) (1024 -1024 704) (1024 -1024 768)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[0 1 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -457,7 +457,7 @@ world
 		{
 			"id" "44"
 			"plane" "(-1024 1024 704) (1024 1024 704) (1024 1024 768)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"
@@ -468,7 +468,7 @@ world
 		{
 			"id" "43"
 			"plane" "(1024 -1024 704) (-1024 -1024 704) (-1024 -1024 768)"
-			"material" "PERFTEST/ROCKWALL002A"
+			"material" "SHADERTEST/LIGHTMAPPEDMASKEDENVMAPPEDBUMPMAPPEDTRANSLUCENTTXTRE"
 			"uaxis" "[1 0 0 0] 0.25"
 			"vaxis" "[0 0 -1 0] 0.25"
 			"rotation" "0"

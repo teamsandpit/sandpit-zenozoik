@@ -371,38 +371,38 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 
 				break;
 			case 4:
-				Q_snprintf( msg, sizeof(msg), "npc_create npc_deadra", i );
+				Q_snprintf( msg, sizeof(msg), "Deadra", i );
 				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_deadra", i );
 
 				break;
 			case 5:
-				Q_snprintf( msg, sizeof(msg), "npc_create npc_zeno_elephant1", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_elephant1", i );
+				Q_snprintf( msg, sizeof(msg), "Deinother", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_elephant1; ent_fire !picker SetHealth 70", i );
 
 				break;
 			case 6:
-				Q_snprintf( msg, sizeof(msg), "npc_create npc_zeno_fathermother", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_fathermother", i );
+				Q_snprintf( msg, sizeof(msg), "FatherMother", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_fathermother; ent_fire !picker SetHealth 70", i );
 
 				break;
 			case 7:
-				Q_snprintf( msg, sizeof(msg), "npc_create npc_zeno_gastornis", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_gastornis", i );
+				Q_snprintf( msg, sizeof(msg), "Gastornis", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_gastornis; ent_fire !picker SetHealth 250", i );
 
 				break;
 			case 8:
-				Q_snprintf( msg, sizeof(msg), "npc_create npc_zeno_mechanic", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_mechanic", i );
+				Q_snprintf( msg, sizeof(msg), "Mechanic", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_mechanic; ent_fire !picker SetHealth 70", i );
 
 				break;
 			case 9:
-				Q_snprintf( msg, sizeof(msg), "npc_create npc_zeno_punk", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_punk", i );
+				Q_snprintf( msg, sizeof(msg), "Jsaj", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_punk; ent_fire !picker SetHealth 70", i );
 
 				break;
 			case 10:
-				Q_snprintf( msg, sizeof(msg), "npc_create npc_zeno_tsekung", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_tsekung", i );
+				Q_snprintf( msg, sizeof(msg), "Tsekung", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_tsekung; ent_fire !picker SetHealth 70", i );
 
 				break;
 			}
