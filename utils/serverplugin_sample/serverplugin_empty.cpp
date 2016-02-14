@@ -339,18 +339,20 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 		return PLUGIN_CONTINUE;
 	}
 
-	if ( FStrEq( pcmd, "menu" ) )
-	{
-		KeyValues *kv = new KeyValues( "menu" );
-		kv->SetString( "title", "Menu" );
-		kv->SetInt( "level", 1 );
-		kv->SetColor( "color", Color( 255, 0, 0, 255 ));
-		kv->SetInt( "time", -1 );
-		kv->SetString( "msg", "Menu" );
+	// TODO: look at UserMessageBegin (use GetUserMessageInfo to get information about messages) for ShowMenu or VGUIMenu
 
-		for( int i = 1; i < 11; i++ )
+	if ( FStrEq( pcmd, "controlmenu" ) )
+	{
+		KeyValues *kv = new KeyValues( "controlmenu" );
+		kv->SetString( "title", "Control Menu: hit ESC to open or close" );
+		kv->SetInt( "level", 0 );
+		kv->SetInt( "time", 200 );
+		kv->SetColor( "color", Color( 255, 0, 0, 255 ));
+		kv->SetString( "msg", "Click an option then hit ESC to return to the game." );
+
+		for( int i = 1; i < 6; i++ )
 		{
-			char num[64], msg[64], cmd[64];
+			char num[4], msg[128], cmd[128];
 			Q_snprintf( num, sizeof(num), "%i", i );
 
 			switch (i)
@@ -371,38 +373,13 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 
 				break;
 			case 4:
-				Q_snprintf( msg, sizeof(msg), "Deadra", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_deadra", i );
+				Q_snprintf( msg, sizeof(msg), "zenocombaton", i );
+				Q_snprintf( cmd, sizeof(cmd), "zenocombaton", i );
 
 				break;
 			case 5:
-				Q_snprintf( msg, sizeof(msg), "Deinother", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_elephant1; ent_fire !picker SetHealth 70", i );
-
-				break;
-			case 6:
-				Q_snprintf( msg, sizeof(msg), "FatherMother", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_fathermother; ent_fire !picker SetHealth 70", i );
-
-				break;
-			case 7:
-				Q_snprintf( msg, sizeof(msg), "Gastornis", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_gastornis; ent_fire !picker SetHealth 250", i );
-
-				break;
-			case 8:
-				Q_snprintf( msg, sizeof(msg), "Mechanic", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_mechanic; ent_fire !picker SetHealth 70", i );
-
-				break;
-			case 9:
-				Q_snprintf( msg, sizeof(msg), "Jsaj", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_punk; ent_fire !picker SetHealth 70", i );
-
-				break;
-			case 10:
-				Q_snprintf( msg, sizeof(msg), "Tsekung", i );
-				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_tsekung; ent_fire !picker SetHealth 70", i );
+				Q_snprintf( msg, sizeof(msg), "zenocombatoff", i );
+				Q_snprintf( cmd, sizeof(cmd), "zenocombatoff", i );
 
 				break;
 			}
@@ -410,41 +387,67 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 			KeyValues *item1 = kv->FindKey( num, true );
 			item1->SetString( "msg", msg );
 			item1->SetString( "command", cmd );
-
-			/*
-			Q_snprintf( msg, sizeof(msg), "Option %i", i );
-			Q_snprintf( cmd, sizeof(cmd), "option%i", i );
-
-			KeyValues *item1 = kv->FindKey( num, true );
-			item1->SetString( "msg", msg );
-			item1->SetString( "command", cmd );
-			*/
 		}
 
 		helpers->CreateMessage( pEntity, DIALOG_MENU, kv, this );
 
-		// helpers->ClientCommand( pEntity, "cancelselect" );
-
 		kv->deleteThis();
 		return PLUGIN_STOP; // we handled this function
 	}
-
-#if 0
-	if ( FStrEq( pcmd, "menu" ) )
+	else if ( FStrEq( pcmd, "spawnmenu" ) )
 	{
-		KeyValues *kv = new KeyValues( "menu" );
-		kv->SetString( "title", "You've got options, hit ESC" );
-		kv->SetInt( "level", 1 );
+		KeyValues *kv = new KeyValues( "spawnmenu" );
+		kv->SetString( "title", "Spawn Menu: hit ESC to open or close" );
+		kv->SetInt( "level", 0 );
+		kv->SetInt( "time", 200 );
 		kv->SetColor( "color", Color( 255, 0, 0, 255 ));
-		kv->SetInt( "time", 20 );
-		kv->SetString( "msg", "Pick an option\nOr don't." );
-		
-		for( int i = 1; i < 9; i++ )
+		kv->SetString( "msg", "Click an option then hit ESC to return to the game." );
+
+		for( int i = 1; i < 6; i++ )
 		{
-			char num[10], msg[10], cmd[10];
+			char num[4], msg[128], cmd[128];
 			Q_snprintf( num, sizeof(num), "%i", i );
-			Q_snprintf( msg, sizeof(msg), "Option %i", i );
-			Q_snprintf( cmd, sizeof(cmd), "option%i", i );
+
+			switch (i)
+			{
+			case 1:
+				Q_snprintf( msg, sizeof(msg), "Deadra", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_deadra", i );
+
+				break;
+			case 2:
+				Q_snprintf( msg, sizeof(msg), "Deinother", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_elephant1", i );
+
+				break;
+			case 3:
+				Q_snprintf( msg, sizeof(msg), "FatherMother", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_fathermother", i );
+
+				break;
+			case 4:
+				Q_snprintf( msg, sizeof(msg), "Gastornis", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_gastornis", i );
+
+				break;
+			case 5:
+				Q_snprintf( msg, sizeof(msg), "Mechanic", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_mechanic", i );
+
+				break;
+			case 6:
+				Q_snprintf( msg, sizeof(msg), "Jsaj", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_punk", i );
+
+				break;
+			case 7:
+				Q_snprintf( msg, sizeof(msg), "Tsekung", i );
+				Q_snprintf( cmd, sizeof(cmd), "npc_create npc_zeno_tsekung", i );
+
+				break;
+			}
+
+			strcat(cmd, "; ent_fire !picker SetHealth 70;");
 
 			KeyValues *item1 = kv->FindKey( num, true );
 			item1->SetString( "msg", msg );
@@ -452,46 +455,11 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 		}
 
 		helpers->CreateMessage( pEntity, DIALOG_MENU, kv, this );
+
 		kv->deleteThis();
 		return PLUGIN_STOP; // we handled this function
 	}
-	else if ( FStrEq( pcmd, "rich" ) )
-	{
-		KeyValues *kv = new KeyValues( "menu" );
-		kv->SetString( "title", "A rich message" );
-		kv->SetInt( "level", 1 );
-		kv->SetInt( "time", 20 );
-		kv->SetString( "msg", "This is a long long long text string.\n\nIt also has line breaks." );
-		
-		helpers->CreateMessage( pEntity, DIALOG_TEXT, kv, this );
-		kv->deleteThis();
-		return PLUGIN_STOP; // we handled this function
-	}
-	else if ( FStrEq( pcmd, "msg" ) )
-	{
-		KeyValues *kv = new KeyValues( "menu" );
-		kv->SetString( "title", "Just a simple hello" );
-		kv->SetInt( "level", 1 );
-		kv->SetInt( "time", 20 );
-		
-		helpers->CreateMessage( pEntity, DIALOG_MSG, kv, this );
-		kv->deleteThis();
-		return PLUGIN_STOP; // we handled this function
-	}
-	else if ( FStrEq( pcmd, "entry" ) )
-	{
-		KeyValues *kv = new KeyValues( "entry" );
-		kv->SetString( "title", "Stuff" );
-		kv->SetString( "msg", "Enter something" );
-		kv->SetString( "command", "say" ); // anything they enter into the dialog turns into a say command
-		kv->SetInt( "level", 1 );
-		kv->SetInt( "time", 20 );
-		
-		helpers->CreateMessage( pEntity, DIALOG_ENTRY, kv, this );
-		kv->deleteThis();
-		return PLUGIN_STOP; // we handled this function		
-	}
-#endif
+
 	return PLUGIN_CONTINUE;
 }
 
