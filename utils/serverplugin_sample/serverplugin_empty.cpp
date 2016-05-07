@@ -495,6 +495,48 @@ public:
 	virtual void Unknown199() = 0;
 };
 
+class VfuncEmptyClass {};
+
+class VFuncs
+{
+	void ZenoCombat(CBaseEntity *pThisPtr, int on_or_off);
+};
+
+// https://wiki.alliedmods.net/Virtual_Offsets_(Source_Mods)
+void VFuncs::ZenoCombat(CBaseEntity *pThisPtr, int on_or_off)
+{
+	// http://kaisar-haque.blogspot.com.au/2008/07/c-accessing-virtual-table.html
+
+	// get this
+	void **this_ptr = *(void ***)&pThisPtr;
+	// get the vtable as an array of void *
+	void **vtable = *(void ***)pThisPtr;
+	void *func = vtable[1664]; 
+
+	// use a union to get the address as a function pointer
+	union
+	{
+		void (VfuncEmptyClass::*mfpnew)(int);
+	#ifndef __linux__
+		void *addr;
+	} u; 
+	
+	u.addr = func;
+	#else // GCC's member function pointers all contain a this pointer adjustor. You'd probably set it to 0 
+		struct
+		{
+			void *addr;
+			intptr_t adjustor;
+		} s;
+	} u;
+	
+	u.s.addr = func;
+	u.s.adjustor = 0;
+	#endif
+ 
+	(void) (reinterpret_cast<VfuncEmptyClass*>(this_ptr)->*u.mfpnew)(on_or_off);
+}
+
 //---------------------------------------------------------------------------------
 // Purpose: called when a client joins a server
 //---------------------------------------------------------------------------------
