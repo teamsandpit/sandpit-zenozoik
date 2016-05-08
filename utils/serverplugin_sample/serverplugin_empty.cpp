@@ -499,8 +499,44 @@ class VfuncEmptyClass {};
 
 class VFuncs
 {
+public:
+	void SetModel(CBaseEntity *pThisPtr, const char *name);
 	void ZenoCombat(CBaseEntity *pThisPtr, int on_or_off);
 };
+
+void VFuncs::SetModel(CBaseEntity *pThisPtr, const char *name)
+{
+	// http://kaisar-haque.blogspot.com.au/2008/07/c-accessing-virtual-table.html
+
+	// get this
+	void **this_ptr = *(void ***)&pThisPtr;
+	// get the vtable as an array of void *
+	void **vtable = *(void ***)pThisPtr;
+	void *func = vtable[24]; 
+
+	// use a union to get the address as a function pointer
+	union
+	{
+		void (VfuncEmptyClass::*mfpnew)(const char *);
+	#ifndef __linux__
+		void *addr;
+	} u; 
+	
+	u.addr = func;
+	#else // GCC's member function pointers all contain a this pointer adjustor. You'd probably set it to 0 
+		struct
+		{
+			void *addr;
+			intptr_t adjustor;
+		} s;
+	} u;
+	
+	u.s.addr = func;
+	u.s.adjustor = 0;
+	#endif
+ 
+	(void) (reinterpret_cast<VfuncEmptyClass*>(this_ptr)->*u.mfpnew)(name);
+}
 
 // https://wiki.alliedmods.net/Virtual_Offsets_(Source_Mods)
 void VFuncs::ZenoCombat(CBaseEntity *pThisPtr, int on_or_off)
@@ -511,7 +547,7 @@ void VFuncs::ZenoCombat(CBaseEntity *pThisPtr, int on_or_off)
 	void **this_ptr = *(void ***)&pThisPtr;
 	// get the vtable as an array of void *
 	void **vtable = *(void ***)pThisPtr;
-	void *func = vtable[1664]; 
+	void *func = vtable[416]; 
 
 	// use a union to get the address as a function pointer
 	union
@@ -542,7 +578,6 @@ void VFuncs::ZenoCombat(CBaseEntity *pThisPtr, int on_or_off)
 //---------------------------------------------------------------------------------
 PLUGIN_RESULT CEmptyServerPlugin::ClientConnect( bool *bAllowConnect, edict_t *pEntity, const char *pszName, const char *pszAddress, char *reject, int maxrejectlen )
 {
-	pEntity->GetUnknown()->GetBaseEntity();
 	return PLUGIN_CONTINUE;
 }
 
@@ -705,6 +740,18 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 		helpers->CreateMessage( pEntity, DIALOG_MENU, kv, this );
 
 		kv->deleteThis();
+		return PLUGIN_STOP; // we handled this function
+	}
+	else if (FStrEq( pcmd, "combat" ))
+	{
+		VFuncs f;
+		Msg("got here...\n");
+
+		CBaseEntity *pent = pEntity->GetUnknown()->GetBaseEntity();
+
+		f.ZenoCombat(pent, 0);
+
+		// f.SetModel(pent, "models/error.mdl");
 		return PLUGIN_STOP; // we handled this function
 	}
 
