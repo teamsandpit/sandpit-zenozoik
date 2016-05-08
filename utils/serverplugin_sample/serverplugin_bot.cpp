@@ -361,8 +361,11 @@ void Bot_Think( CPluginBot *pBot )
 				Bot_UpdateStrafing( pBot, cmd );
 			}
 
+			engine->ClientCommand(pBot->m_BotEdict, "combaton");
+
 			// Handle console settings.
-			Bot_ForceFireWeapon( pBot, cmd );
+			// Bot_ForceFireWeapon( pBot, cmd );
+			cmd.buttons |= IN_ATTACK;
 			Bot_HandleSendCmd( pBot );
 		}
 		else

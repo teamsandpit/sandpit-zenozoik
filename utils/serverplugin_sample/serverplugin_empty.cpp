@@ -504,6 +504,8 @@ public:
 	void ZenoCombat(CBaseEntity *pThisPtr, int on_or_off);
 };
 
+typedef void* lpvoid;
+
 void VFuncs::SetModel(CBaseEntity *pThisPtr, const char *name)
 {
 	// http://kaisar-haque.blogspot.com.au/2008/07/c-accessing-virtual-table.html
