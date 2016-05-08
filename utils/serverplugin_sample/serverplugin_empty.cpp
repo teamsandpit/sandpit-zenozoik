@@ -622,6 +622,8 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 		return PLUGIN_CONTINUE;
 	}
 
+	VFuncs f;
+
 	// TODO: look at UserMessageBegin (use GetUserMessageInfo to get information about messages) for ShowMenu or VGUIMenu
 
 	if ( FStrEq( pcmd, "controlmenu" ) )
@@ -742,16 +744,38 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 		kv->deleteThis();
 		return PLUGIN_STOP; // we handled this function
 	}
-	else if (FStrEq( pcmd, "combat" ))
+	else if (FStrEq( pcmd, "combaton" ))
 	{
-		VFuncs f;
-		Msg("got here...\n");
+		Msg("zenocombaton\n");
 
 		CBaseEntity *pent = pEntity->GetUnknown()->GetBaseEntity();
 
-		f.ZenoCombat(pent, 0);
+		if (pent)
+		{
+			f.ZenoCombat(pent, 1);
+		}
+		else
+		{
+			Msg("NULL pent\n");
+		}
 
-		// f.SetModel(pent, "models/error.mdl");
+		return PLUGIN_STOP; // we handled this function
+	}
+	else if (FStrEq( pcmd, "combatoff" ))
+	{
+		Msg("zenocombatoff\n");
+
+		CBaseEntity *pent = pEntity->GetUnknown()->GetBaseEntity();
+
+		if (pent)
+		{
+			f.ZenoCombat(pent, 0);
+		}
+		else
+		{
+			Msg("NULL pent\n");
+		}
+
 		return PLUGIN_STOP; // we handled this function
 	}
 
