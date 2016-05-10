@@ -361,12 +361,13 @@ void Bot_Think( CPluginBot *pBot )
 				Bot_UpdateStrafing( pBot, cmd );
 			}
 
-			engine->ClientCommand(pBot->m_BotEdict, "combaton");
-
 			// Handle console settings.
 			// Bot_ForceFireWeapon( pBot, cmd );
+			// TODO: plugin_bot_forcefireweapon weapon_zeno_melee instead?
 			cmd.buttons |= IN_ATTACK;
-			Bot_HandleSendCmd( pBot );
+			// Bot_HandleSendCmd( pBot );
+			// TODO: plugin_bot_sendcmd combaton instead?
+			engine->ClientCommand(pBot->m_BotEdict, "combaton");
 		}
 		else
 		{

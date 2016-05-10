@@ -748,7 +748,7 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 	}
 	else if (FStrEq( pcmd, "combaton" ))
 	{
-		Msg("zenocombaton\n");
+		Msg("zenocombaton for entity %d\n", engine->IndexOfEdict(pEntity));
 
 		CBaseEntity *pent = pEntity->GetUnknown()->GetBaseEntity();
 
@@ -765,7 +765,7 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 	}
 	else if (FStrEq( pcmd, "combatoff" ))
 	{
-		Msg("zenocombatoff\n");
+		Msg("zenocombatoff for entity %d\n", engine->IndexOfEdict(pEntity));
 
 		CBaseEntity *pent = pEntity->GetUnknown()->GetBaseEntity();
 
