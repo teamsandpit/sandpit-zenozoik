@@ -5,7 +5,7 @@
 	// title2		"Zenozoik"
 
 	"developer" 		"Team Sandpit"
-	"developer_url" 	"http://www.moddb.com/groups/team-sandpit"
+	"developer_url" 	"http://www.teamsandpit.com"
 
 	gamelogo 	1
 	nodifficulty 	0
