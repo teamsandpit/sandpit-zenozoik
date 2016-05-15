@@ -22,6 +22,8 @@
 #include "tier2/tier2.h"
 #include "game/server/iplayerinfo.h"
 
+#include "czeno_player.h"
+
 // Uncomment this to compile the sample TF2 plugin code, note: most of this is duplicated in serverplugin_tony, but kept here for reference!
 //#define SAMPLE_TF2_PLUGIN
 // memdbgon must be the last include file in a .cpp file!!!
@@ -497,14 +499,39 @@ public:
 
 class VfuncEmptyClass {};
 
-class VFuncs
-{
-public:
-	void SetModel(CBaseEntity *pThisPtr, const char *name);
-	void ZenoCombat(CBaseEntity *pThisPtr, int on_or_off);
-};
-
 typedef void* lpvoid;
+
+void VFuncs::Spawn(CBaseEntity *pThisPtr)
+{
+	// get this
+	void **this_ptr = *(void ***)&pThisPtr;
+	// get the vtable as an array of void *
+	void **vtable = *(void ***)pThisPtr;
+	void *func = vtable[21]; 
+
+	// use a union to get the address as a function pointer
+	union
+	{
+		void (VfuncEmptyClass::*mfpnew)(void);
+	#ifndef __linux__
+		void *addr;
+	} u; 
+	
+	u.addr = func;
+	#else // GCC's member function pointers all contain a this pointer adjustor. You'd probably set it to 0 
+		struct
+		{
+			void *addr;
+			intptr_t adjustor;
+		} s;
+	} u;
+	
+	u.s.addr = func;
+	u.s.adjustor = 0;
+	#endif
+ 
+	(void) (reinterpret_cast<VfuncEmptyClass*>(this_ptr)->*u.mfpnew)();
+}
 
 void VFuncs::SetModel(CBaseEntity *pThisPtr, const char *name)
 {
@@ -612,6 +639,8 @@ CON_COMMAND( DoAskConnect, "Server plugin example of using the ask connect dialo
 }
 #endif
 
+VFuncs f;
+
 //---------------------------------------------------------------------------------
 // Purpose: called when a client types in a command (only a subset of commands however, not CON_COMMAND's)
 //---------------------------------------------------------------------------------
@@ -623,8 +652,6 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 	{
 		return PLUGIN_CONTINUE;
 	}
-
-	VFuncs f;
 
 	// TODO: look at UserMessageBegin (use GetUserMessageInfo to get information about messages) for ShowMenu or VGUIMenu
 
@@ -813,6 +840,19 @@ void CEmptyServerPlugin::FireGameEvent( KeyValues * event )
 {
 	const char * name = event->GetName();
 	Msg( "CEmptyServerPlugin::FireGameEvent: Got event \"%s\"\n", name );
+
+	/*
+	CEmptyServerPlugin::FireGameEvent: Got event "entity_killed"
+	Key name: entindex_killed type 0
+	Key name: entindex_attacker type 0
+	Key name: entindex_inflictor type 0
+	Key name: damagebits type 0
+	*/
+
+	for ( KeyValues *pKey = event->GetFirstSubKey(); pKey; pKey = pKey->GetNextKey() )
+	{
+		Msg( "Key name: %s type %d\n", pKey->GetName(), pKey->GetDataType(pKey->GetName()) );
+	}
 }
 
 #if 0

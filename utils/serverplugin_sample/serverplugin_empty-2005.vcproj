@@ -274,13 +274,6 @@
 			<File
 				RelativePath=".\serverplugin_bot.cpp"
 				>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\serverplugin_empty.cpp"
@@ -320,6 +313,10 @@
 			</File>
 			<File
 				RelativePath="..\..\public\Color.h"
+				>
+			</File>
+			<File
+				RelativePath=".\czeno_player.h"
 				>
 			</File>
 			<File

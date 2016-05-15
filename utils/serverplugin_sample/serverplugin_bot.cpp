@@ -27,6 +27,8 @@
 // #include "../../game/shared/util_shared.h"
 #include "engine/IEngineTrace.h"
 
+#include "czeno_player.h"
+
 extern IBotManager *botmanager; 
 extern IUniformRandomStream *randomStr;
 extern IPlayerInfoManager *playerinfomanager; 
@@ -289,12 +291,14 @@ void Bot_ForceFireWeapon( CPluginBot *pBot, CBotCmd &cmd )
 {
 	if ( Q_strlen( bot_forcefireweapon.GetString() ) > 0 )
 	{
-		pBot->m_BotInterface->SetActiveWeapon( bot_forcefireweapon.GetString() );
+		Msg(bot_forcefireweapon.GetString());
+		// pBot->m_BotInterface->SetActiveWeapon( bot_forcefireweapon.GetString() );
 		bot_forcefireweapon.SetValue( "" );
 		// Start firing
 		// Some weapons require releases, so randomise firing
-		if ( bot_forceattackon.GetBool() || (RandomFloat(0.0,1.0) > 0.5) )
+		if ( true || bot_forceattackon.GetBool() || (RandomFloat(0.0,1.0) > 0.5) )
 		{
+			Msg("firing\n");
 			cmd.buttons |= bot_forceattack2.GetBool() ? IN_ATTACK2 : IN_ATTACK;
 		}
 	}
@@ -321,18 +325,30 @@ void Bot_SetForwardMovement( CPluginBot *pBot, CBotCmd &cmd )
 	}
 }
 
+extern VFuncs f;
 
 void Bot_HandleRespawn( CPluginBot *pBot, CBotCmd &cmd )
 {
 	// Wait for Reinforcement wave
 	if ( pBot->m_PlayerInfo->IsDead() )
 	{
-		if ( pBot->m_PlayerInfo->GetTeamIndex() == 0 )
+		CBaseEntity *pent = pBot->m_BotEdict->GetUnknown()->GetBaseEntity();
+
+		if (pent)
+		{
+			// f.Spawn();
+		}
+		else
+		{
+			Msg("NULL pent\n");
+		}
+
+		/*if ( pBot->m_PlayerInfo->GetTeamIndex() == 0 )
 		{
 			helpers->ClientCommand( pBot->m_BotEdict, "joingame" );
 			helpers->ClientCommand( pBot->m_BotEdict, "jointeam 3" );
 			helpers->ClientCommand( pBot->m_BotEdict, "joinclass 0" );
-		}
+		}*/
 	}
 }
 
@@ -352,22 +368,22 @@ void Bot_Think( CPluginBot *pBot )
 
 		if ( !pBot->m_PlayerInfo->IsDead() )
 		{
-			Bot_SetForwardMovement( pBot, cmd );
+			// Bot_SetForwardMovement( pBot, cmd );
 
 			// Only turn if I haven't been hurt
 			if ( !pBot->m_BotInterface->IsEFlagSet(EFL_BOT_FROZEN) && pBot->m_PlayerInfo->GetHealth() == 100 )
 			{
-				Bot_UpdateDirection( pBot );
-				Bot_UpdateStrafing( pBot, cmd );
+				// Bot_UpdateDirection( pBot );
+				// Bot_UpdateStrafing( pBot, cmd );
 			}
 
 			// Handle console settings.
-			// Bot_ForceFireWeapon( pBot, cmd );
+			Bot_ForceFireWeapon( pBot, cmd );
 			// TODO: plugin_bot_forcefireweapon weapon_zeno_melee instead?
-			cmd.buttons |= IN_ATTACK;
-			// Bot_HandleSendCmd( pBot );
+			// cmd.buttons |= IN_ATTACK;
+			Bot_HandleSendCmd( pBot );
 			// TODO: plugin_bot_sendcmd combaton instead?
-			engine->ClientCommand(pBot->m_BotEdict, "combaton");
+			// engine->ClientCommand(pBot->m_BotEdict, "combaton");
 		}
 		else
 		{
