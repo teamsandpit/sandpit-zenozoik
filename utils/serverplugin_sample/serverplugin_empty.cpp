@@ -220,6 +220,8 @@ void CEmptyServerPlugin::LevelShutdown( void ) // !!!!this can get called multip
 	gameeventmanager->RemoveListener( this );
 }
 
+VFuncs f;
+
 //---------------------------------------------------------------------------------
 // Purpose: called when a client spawns into a server (i.e as they begin to play)
 //---------------------------------------------------------------------------------
@@ -227,6 +229,9 @@ void CEmptyServerPlugin::ClientActive( edict_t *pEntity )
 {
 	// TODO: set the origin to the location of a random info_player_deathmatch
 	helpers->ClientCommand( pEntity, "combaton" );
+	Msg("%s\n", STRING(f.GetModelName(pEntity->GetUnknown()->GetBaseEntity())));
+	f.SetModel( pEntity->GetUnknown()->GetBaseEntity(), "models/weapons/skullbombs/skullbomb.mdl" );
+	Msg("%s\n", STRING(f.GetModelName(pEntity->GetUnknown()->GetBaseEntity())));
 }
 
 //---------------------------------------------------------------------------------
@@ -299,6 +304,38 @@ void CEmptyServerPlugin::ClientSettingsChanged( edict_t *pEdict )
 class VfuncEmptyClass {};
 
 typedef void* lpvoid;
+
+const string_t VFuncs::GetModelName(CBaseEntity *pThisPtr)
+{
+	// get this
+	void **this_ptr = *(void ***)&pThisPtr;
+	// get the vtable as an array of void *
+	void **vtable = *(void ***)pThisPtr;
+	void *func = vtable[7]; 
+
+	// use a union to get the address as a function pointer
+	union
+	{
+		const string_t (VfuncEmptyClass::*mfpnew)(void);
+	#ifndef __linux__
+		void *addr;
+	} u; 
+	
+	u.addr = func;
+	#else // GCC's member function pointers all contain a this pointer adjustor. You'd probably set it to 0 
+		struct
+		{
+			void *addr;
+			intptr_t adjustor;
+		} s;
+	} u;
+	
+	u.s.addr = func;
+	u.s.adjustor = 0;
+	#endif
+ 
+	return (const string_t) (reinterpret_cast<VfuncEmptyClass*>(this_ptr)->*u.mfpnew)();
+}
 
 void VFuncs::Spawn(CBaseEntity *pThisPtr)
 {
@@ -437,8 +474,6 @@ CON_COMMAND( DoAskConnect, "Server plugin example of using the ask connect dialo
 	}
 }
 #endif
-
-VFuncs f;
 
 //---------------------------------------------------------------------------------
 // Purpose: called when a client types in a command (only a subset of commands however, not CON_COMMAND's)
@@ -649,13 +684,25 @@ void CEmptyServerPlugin::FireGameEvent( KeyValues * event )
 
 		if (pent)
 		{
+			// see CHL2MP_Player::Spawn - spawn, then reset the flags etc
 			Msg("respawning\n");
 			f.Spawn(pent);
+
+			// pl.deadflag = false;
+			// RemoveSolidFlags( FSOLID_NOT_SOLID );
+
+			// RemoveEffects( EF_NODRAW );
 		}
 		else
 		{
 			Msg("NULL pent\n");
 		}
+	}
+	else if (FStrEq(name, "player_damage"))
+	{
+		KeyValues *pKey = event->FindKey("damage", false);
+
+		Msg("damage %d\n", pKey->GetInt());
 	}
 
 	/*

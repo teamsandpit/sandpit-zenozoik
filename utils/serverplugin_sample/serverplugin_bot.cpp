@@ -336,11 +336,11 @@ void Bot_HandleRespawn( CPluginBot *pBot, CBotCmd &cmd )
 
 		if (pent)
 		{
-			// f.Spawn();
+			// f.Spawn(pent);
 		}
 		else
 		{
-			Msg("NULL pent\n");
+			// Msg("NULL pent\n");
 		}
 
 		/*if ( pBot->m_PlayerInfo->GetTeamIndex() == 0 )
