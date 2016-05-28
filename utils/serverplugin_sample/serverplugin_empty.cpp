@@ -611,9 +611,9 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 	{
 		Msg("zenocombaton for entity %d\n", engine->IndexOfEdict(pEntity));
 
-		Vector origin = playerinfomanager->GetPlayerInfo(pEntity)->GetAbsOrigin();
+		// Vector origin = playerinfomanager->GetPlayerInfo(pEntity)->GetAbsOrigin();
 
-		Msg("origin %f %f %f\n", origin.x, origin.y, origin.z);
+		// Msg("origin %f %f %f\n", origin.x, origin.y, origin.z);
 
 		CBaseEntity *pent = pEntity->GetUnknown()->GetBaseEntity();
 
@@ -631,8 +631,6 @@ PLUGIN_RESULT CEmptyServerPlugin::ClientCommand( edict_t *pEntity, const CComman
 	else if (FStrEq( pcmd, "combatoff" ))
 	{
 		Msg("zenocombatoff for entity %d\n", engine->IndexOfEdict(pEntity));
-
-		// botmanager->GetBotController(pEntity)->SetAbsOrigin(Vector(60, 60, 0));
 
 		CBaseEntity *pent = pEntity->GetUnknown()->GetBaseEntity();
 
