@@ -8,6 +8,10 @@ Help: Read the manual.
 
 == Changelog ==
 
+v0.3 (28/5/16)
+- Attempt at adding basic multiplayer.
+- Made it more obvious that you need to press ESC to open the spawn menu after pressing 'q' (thanks to the Source engine's plugin system).
+
 v0.2 (24/6/13)
 - Changed menu buttons to show npc names instead of npc class names.
 - Changed map's texture to something that doesn't show up funky.
