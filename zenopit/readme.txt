@@ -1,10 +1,22 @@
 Sandpit: Zenozoik
 
 == About ==
+
 Name: Sandpit: Zenozoik
 Description: A 'sandbox' mod for Zeno Clash.
 Requirements: Zeno Clash.
-Help: Read the manual.
+Installation: copy \zenopit\ to \steamapps\sourcemods\ and restart Steam.
+
+== FAQs ==
+
+Q. How do I open the menu?
+A. Press Q.
+
+Q. The menu still doesn't show.
+A. Press ESC to see it (yes this is annoying but that's all that the plugin API allows).
+
+Q. Nothing happens when I try to spawn something.
+A. Make sure you're pointing so your cursor at the floor - the game won't spawn anything if you're pointing at a wall because it can't spawn things in a wall.
 
 == Changelog ==
 
