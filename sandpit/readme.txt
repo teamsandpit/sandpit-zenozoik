@@ -5,7 +5,7 @@ Sandpit: Zenozoik
 Name: Sandpit: Zenozoik
 Description: A 'sandbox' mod for Zeno Clash.
 Requirements: Zeno Clash.
-Installation: copy \zenopit\ to \steamapps\sourcemods\ and restart Steam.
+Installation: copy \sandpit\ to \steamapps\sourcemods\ and restart Steam.
 
 == FAQs ==
 
