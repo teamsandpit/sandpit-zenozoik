@@ -1,5 +1,6 @@
-utils/serverplugin_sample/Debug
-utils/serverplugin_sample/Release
+utils/serverplugin_sandpit/.vs
+utils/serverplugin_sandpit/Debug
+utils/serverplugin_sandpit/Release
 
 # Visual Studio-related stuff
 *.ncb

@@ -2,7 +2,7 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9.00"
-	Name="serverplugin_empty-2005"
+	Name="serverplugin_zcmp-2008"
 	ProjectGUID="{B6572CBE-7C7F-4FFF-94DE-AFBBBAB11C64}"
 	TargetFrameworkVersion="131072"
 	>
@@ -82,7 +82,7 @@
 				UseUnicodeResponseFiles="false"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				ShowProgress="0"
-				OutputFile="$(OutDir)/serverplugin_empty.dll"
+				OutputFile="$(OutDir)/zcmp.dll"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib\common;..\..\lib\public"
@@ -197,7 +197,7 @@
 				UseUnicodeResponseFiles="false"
 				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				ShowProgress="0"
-				OutputFile="$(OutDir)/serverplugin_empty.dll"
+				OutputFile="$(OutDir)/zcmp.dll"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
 				AdditionalLibraryDirectories="..\..\lib\common;..\..\lib\public"
@@ -272,11 +272,15 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\serverplugin_bot.cpp"
+				RelativePath="..\serverplugin_sample\serverplugin_bot.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\serverplugin_empty.cpp"
+				RelativePath=".\serverplugin_zcmp.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\zenoplayer.cpp"
 				>
 			</File>
 		</Filter>
@@ -313,10 +317,6 @@
 			</File>
 			<File
 				RelativePath="..\..\public\Color.h"
-				>
-			</File>
-			<File
-				RelativePath=".\czeno_player.h"
 				>
 			</File>
 			<File
@@ -385,6 +385,10 @@
 			</File>
 			<File
 				RelativePath="..\..\public\vstdlib\vstdlib.h"
+				>
+			</File>
+			<File
+				RelativePath=".\zenoplayer.h"
 				>
 			</File>
 		</Filter>
