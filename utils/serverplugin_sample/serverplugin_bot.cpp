@@ -47,7 +47,6 @@ static ConVar bot_mimic_yaw_offset( "plugin_bot_mimic_yaw_offset", "0", 0, "Offs
 
 ConVar bot_sendcmd( "plugin_bot_sendcmd", "", 0, "Forces bots to send the specified command." );
 ConVar bot_crouch( "plugin_bot_crouch", "0", 0, "Bot crouches" );
-ConVar bot_move( "plugin_bot_move", "0", 0, "Bot moves" );
 
 
 // This is our bot class.
@@ -288,14 +287,15 @@ void Bot_HandleSendCmd( CPluginBot *pBot )
 // If bots are being forced to fire a weapon, see if I have it
 void Bot_ForceFireWeapon( CPluginBot *pBot, CBotCmd &cmd )
 {
-	if ( true )
+	if ( Q_strlen( bot_forcefireweapon.GetString() ) > 0 )
 	{
+		pBot->m_BotInterface->SetActiveWeapon( bot_forcefireweapon.GetString() );
 		bot_forcefireweapon.SetValue( "" );
 		// Start firing
 		// Some weapons require releases, so randomise firing
-		if ( RandomFloat(0.0,1.0) > 0.5 )
+		if ( bot_forceattackon.GetBool() || (RandomFloat(0.0,1.0) > 0.5) )
 		{
-			cmd.buttons |= IN_ATTACK;
+			cmd.buttons |= bot_forceattack2.GetBool() ? IN_ATTACK2 : IN_ATTACK;
 		}
 	}
 }
@@ -303,12 +303,20 @@ void Bot_ForceFireWeapon( CPluginBot *pBot, CBotCmd &cmd )
 
 void Bot_SetForwardMovement( CPluginBot *pBot, CBotCmd &cmd )
 {
-	if ( !pBot->m_BotInterface->IsEFlagSet(EFL_BOT_FROZEN) && bot_move.GetInt() > 0 )
+	if ( !pBot->m_BotInterface->IsEFlagSet(EFL_BOT_FROZEN) )
 	{
-		cmd.forwardmove = 600 * ( pBot->m_bBackwards ? -1 : 1 );
-		if ( pBot->m_flSideMove != 0.0f )
+		if ( pBot->m_PlayerInfo->GetHealth() == 100 )
 		{
-			cmd.forwardmove *= randomStr->RandomFloat( 0.1, 1.0f );
+			cmd.forwardmove = 600 * ( pBot->m_bBackwards ? -1 : 1 );
+			if ( pBot->m_flSideMove != 0.0f )
+			{
+				cmd.forwardmove *= randomStr->RandomFloat( 0.1, 1.0f );
+			}
+		}
+		else
+		{
+			// Stop when shot
+			cmd.forwardmove = 0;
 		}
 	}
 }
@@ -322,6 +330,8 @@ void Bot_HandleRespawn( CPluginBot *pBot, CBotCmd &cmd )
 		if ( pBot->m_PlayerInfo->GetTeamIndex() == 0 )
 		{
 			helpers->ClientCommand( pBot->m_BotEdict, "joingame" );
+			helpers->ClientCommand( pBot->m_BotEdict, "jointeam 3" );
+			helpers->ClientCommand( pBot->m_BotEdict, "joinclass 0" );
 		}
 	}
 }
@@ -345,10 +355,10 @@ void Bot_Think( CPluginBot *pBot )
 			Bot_SetForwardMovement( pBot, cmd );
 
 			// Only turn if I haven't been hurt
-			if ( !pBot->m_BotInterface->IsEFlagSet(EFL_BOT_FROZEN) && bot_move.GetInt() > 0 )
+			if ( !pBot->m_BotInterface->IsEFlagSet(EFL_BOT_FROZEN) && pBot->m_PlayerInfo->GetHealth() == 100 )
 			{
-				// Bot_UpdateDirection( pBot );
-				// Bot_UpdateStrafing( pBot, cmd );
+				Bot_UpdateDirection( pBot );
+				Bot_UpdateStrafing( pBot, cmd );
 			}
 
 			// Handle console settings.
